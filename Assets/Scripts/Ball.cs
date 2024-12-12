@@ -4,35 +4,27 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    private Rigidbody rb;
+    public float jumpForce = 5f; // Zýplama kuvveti
+    private Rigidbody rb;       // Rigidbody bileþeni
 
     void Start()
     {
-        // Rigidbody bileþenini alýyoruz
+        // Rigidbody bileþenini al
         rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        // Top hareket ettirilebilir, örnek olarak klavye giriþleriyle
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        rb.AddForce(movement * 10f); // Hýz katsayýsýný deðiþtirebilirsiniz
+        // Ekrana dokunulduðunda zýpla
+        if (Input.GetMouseButtonDown(0)) // 0: Sol fare butonu ya da mobil ekrana dokunma
+        {
+            Jump();
+        }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void Jump()
     {
-        // Çarpýþmayý algýladýðýmýz yer
-        if (collision.gameObject.CompareTag("Ground")) // "Ground" zeminin etiketi
-        {
-            // Hýzý sýfýrlýyoruz
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-
-            // Topun hareketini tamamen durdurmak için Rigidbody'yi kinematik yapýyoruz
-            rb.isKinematic = true;
-        }
+        // Yukarý doðru hýz uygula
+        rb.velocity = Vector3.up * jumpForce;
     }
 }
