@@ -8,11 +8,9 @@ public class Circle : MonoBehaviour
 
 
     void Update()
-    {
-        // Daireyi sola hareket ettir
+    {       
         transform.Translate(Vector3.back * speed * Time.deltaTime);
 
-        // Ekranýn dýþýna çýkarsa yok et
         if (transform.position.x < -10f) 
         {
             Destroy(gameObject);
