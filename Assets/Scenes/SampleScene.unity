@@ -675,10 +675,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circlePrefab: {fileID: 1014630822}
   spawnInterval: 2
-  minY: -2
-  maxY: 2
-  minX: 5
-  maxX: 10
+  minY: -16
+  maxY: 16
+  minX: 2
+  maxX: 4
   maxCircles: 50
 --- !u!1 &1819931862
 GameObject:
